@@ -29,3 +29,10 @@ for i in range(len(sentence)):
     newwords = [word for word in words if word not in stopwords.words('english')]
     sentence[i] = ' '.join(newwords)
     
+#Tagged words
+sentence = nltk.sent_tokenize(para)
+tagged_words = nltk.pos_tag(sentence)
+word_tags = []
+for tw in tagged_words:
+    word_tags.append(tw[0] + '_' + tw[1])
+tagged_para = ' '.join(word_tags)
