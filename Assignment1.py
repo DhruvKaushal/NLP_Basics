@@ -44,3 +44,4 @@ for i in range(len(text2)):
     for word in text2[i].split(' '):
         if len(word)==4 and word not in words:
             words.append(word)
+            
