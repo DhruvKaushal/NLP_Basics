@@ -1,6 +1,6 @@
 import nltk
 from nltk import PorterStemmer
-para = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+para = "Thor is played by Chris hemsworth"
 
 #Stemming
 sentence = nltk.sent_tokenize(para)
@@ -36,3 +36,10 @@ word_tags = []
 for tw in tagged_words:
     word_tags.append(tw[0] + '_' + tw[1])
 tagged_para = ' '.join(word_tags)
+
+#Named entity recognition
+words = nltk.word_tokenize(para)
+tagged_words = nltk.pos_tag(words)
+named_ent = nltk.ne_chunk(tagged_words)
+named_ent.draw()
+
