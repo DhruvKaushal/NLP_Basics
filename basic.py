@@ -1,6 +1,7 @@
 import nltk
 import re
 import heapq
+import numpy as np
 from nltk import PorterStemmer
 para = "Thor is played by Chris hemsworth"
 
@@ -77,3 +78,16 @@ for data in dataset:
             word2count[word] += 1
             
 freq_words = heapq.nlargest(100, word2count, key=word2count.get)
+
+X = []
+for data in dataset:
+    vector = []
+    for word in freq_words:
+        if word in nltk.word_tokenize(data):
+            vector.append(1)
+        else:
+            vector.append(0)
+    X.append(vector)
+    
+#Setting the list as numpy array
+X = np.asarray(X)
