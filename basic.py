@@ -1,5 +1,6 @@
 import nltk
 import re
+import heapq
 from nltk import PorterStemmer
 para = "Thor is played by Chris hemsworth"
 
@@ -64,3 +65,15 @@ for i in range(len(dataset)):
     dataset[i] = dataset[i].lower()
     dataset[i] = re.sub(r'\W', ' ', dataset[i])
     dataset[i] = re.sub(r'\s+',' ', dataset[i])
+    
+#Creating the histograms
+word2count = {}
+for data in dataset:
+    words = nltk.word_tokenize(data)
+    for word in words:
+        if word not in word2count.keys():
+            word2count[word] = 1
+        else:
+            word2count[word] += 1
+            
+freq_words = heapq.nlargest(100, word2count, key=word2count.get)
