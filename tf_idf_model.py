@@ -59,3 +59,11 @@ for word in freq_words:
         doc_tf.append(tf_word)
     tf_matrix[word] = doc_tf
     
+#TF-IDF calculation
+tfidf_matrix = []
+for word in tf_matrix.keys():
+    tfidf = []
+    for value in tf_matrix[word]:
+        score = value * word_idfs[word]
+        tfidf.append(score)
+    tfidf_matrix.append(tfidf) 
