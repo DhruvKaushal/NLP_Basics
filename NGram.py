@@ -7,7 +7,7 @@ gradually developing into an unprecedented environmental crisis evident in melti
  droughts. Global warming implies an increase in the average temperature of the 
  Earth due to entrapment of greenhouse gases in the earth’s atmosphere."""
  
-n = 3
+n = 7
 
 #Create ngrams(trigram)
 ngrams = {}
@@ -18,3 +18,14 @@ for i in range(len(text)-n):
     ngrams[gram].append(text[i+n])
     
 
+#Testing our N gram model
+currentGram = text[0:n]
+result = currentGram
+for i in range(100):
+    if currentGram not in ngrams.keys():
+        break
+    possibility = ngrams[currentGram]
+    nextItem = possibility[random.randrange(len(possibility))]
+    result += nextItem
+    currentGram = result[len(result)-n:len(result)]
+print(result)
