@@ -67,3 +67,6 @@ for word in tf_matrix.keys():
         score = value * word_idfs[word]
         tfidf.append(score)
     tfidf_matrix.append(tfidf) 
+
+X = np.asarray(tfidf_matrix)        
+X = np.transpose(X)
