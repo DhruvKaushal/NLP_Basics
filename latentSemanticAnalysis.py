@@ -1,3 +1,6 @@
+# Latent Semantic Analysis using Python
+
+# Importing the Libraries
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
 
@@ -12,9 +15,15 @@ dataset = ["The amount of polution is increasing day by day",
 
 dataset = [line.lower() for line in dataset]
 
+# Creating Tfidf Model
 vectorizer = TfidfVectorizer()
 X = vectorizer.fit_transform(dataset)
 
+# Visualizing the Tfidf Model
+print(X[0])
+
+
+# Creating the SVD
 lsa = TruncatedSVD(n_components = 4, n_iter = 100)
 lsa.fit(X)
 
